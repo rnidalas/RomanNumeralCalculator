@@ -7,7 +7,7 @@ START_TEST(test_test) {
 }
 END_TEST
 
-Suite* money_suite(void) {
+Suite* RomanNumeralCalculatorSuite(void) {
 	Suite *s = suite_create("Test");
 
 	/* Core test cases */
@@ -20,7 +20,7 @@ Suite* money_suite(void) {
 
 int main(void) {
 	int number_failed;
-	Suite *s = money_suite();
+	Suite *s = RomanNumeralCalculatorSuite();
 	SRunner *sr = srunner_create(s);
 	srunner_run_all(sr, CK_NORMAL);
 	number_failed = srunner_ntests_failed(sr);
