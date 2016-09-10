@@ -5,9 +5,21 @@
 /* **********************************************************
  *				convertIntToRomanNumeral tests				*
  * ******************************************************** */
-START_TEST(test_1returnsI) {
+START_TEST(test_1returnValue) {
 	char* numeral = convertIntToRomanNumeral(1);
 	ck_assert_str_eq("I",numeral);
+	free(numeral);
+}
+END_TEST
+
+START_TEST(test_2and3returnValues) {
+	char* numeral = convertIntToRomanNumeral(2);
+	ck_assert_str_eq("II",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(3);
+	ck_assert_str_eq("III",numeral);
+	free(numeral);
 }
 END_TEST
 
@@ -16,7 +28,8 @@ Suite* RomanNumeralCalculatorSuite(void) {
 
 	/* convertIntToRomanNumeral test cases */
 	TCase *tc_core = tcase_create("convertIntToRomanNumeral");
-	tcase_add_test(tc_core, test_1returnsI);
+	tcase_add_test(tc_core, test_1returnValue);
+	tcase_add_test(tc_core, test_2and3returnValues);
 	suite_add_tcase(s, tc_core);
 
 	return s;
