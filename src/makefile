@@ -1,5 +1,5 @@
 # list of object files
-objects = RomanNumeralCalculator.o
+OBJECTS = RomanNumeralCalculator.o
 
 # compiler choice
 CC = gcc
@@ -8,11 +8,13 @@ CC = gcc
 CFLAGS = -g -Wall
 
 # targets
-all: $(objects)
-	$(CC) $(CFLAGS) -o main main.c $(objects)
+all: main
+
+main: $(OBJECTS) main.c
+	$(CC) $(CFLAGS) -o main main.c $(OBJECTS)
 
 RomanNumeralCalculator.o:
 
 .PHONY: clean
 clean:
-	$(RM) main $(objects)
+	$(RM) main $(OBJECTS)

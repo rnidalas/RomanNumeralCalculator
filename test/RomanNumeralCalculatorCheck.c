@@ -1,18 +1,22 @@
 #include <check.h>
 #include <stdlib.h>
+#include "../src/RomanNumeralCalculator.h"
 
-// "Test" test case - to be replaced
-START_TEST(test_test) {
-	ck_assert_int_eq(5,5);
+/* **********************************************************
+ *				convertIntToRomanNumeral tests				*
+ * ******************************************************** */
+START_TEST(test_1returnsI) {
+	char* numeral = convertIntToRomanNumeral(1);
+	ck_assert_str_eq("I",numeral);
 }
 END_TEST
 
 Suite* RomanNumeralCalculatorSuite(void) {
 	Suite *s = suite_create("Test");
 
-	/* Core test cases */
-	TCase *tc_core = tcase_create("Test");
-	tcase_add_test(tc_core, test_test);
+	/* convertIntToRomanNumeral test cases */
+	TCase *tc_core = tcase_create("convertIntToRomanNumeral");
+	tcase_add_test(tc_core, test_1returnsI);
 	suite_add_tcase(s, tc_core);
 
 	return s;

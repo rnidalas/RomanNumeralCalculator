@@ -1,5 +1,5 @@
 # list of object files
-objects = RomanNumeralCalculatorCheck.o
+OBJECTS = RomanNumeralCalculatorCheck.o
 
 # compiler
 CC = gcc
@@ -10,11 +10,11 @@ CFLAGS = -g -Wall
 # targets
 all: check
 
-check: $(objects)
-	$(CC) $(CFLAGS) -o check $(objects) `pkg-config --cflags --libs check`
+check: $(OBJECTS) ../src/RomanNumeralCalculator.o
+	$(CC) $(CFLAGS) -o check $(OBJECTS) ../src/RomanNumeralCalculator.o `pkg-config --cflags --libs check`
 
 RomanNumeralCalculatorCheck.o:
 
 .PHONY: clean
 clean:
-	$(RM) check $(objects)
+	$(RM) check $(OBJECTS)
