@@ -37,6 +37,21 @@ START_TEST(test_5returnValue) {
 }
 END_TEST
 
+START_TEST(test_6to8returnValues) {
+	char* numeral = convertIntToRomanNumeral(6);
+	ck_assert_str_eq("VI",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(7);
+	ck_assert_str_eq("VII",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(8);
+	ck_assert_str_eq("VIII",numeral);
+	free(numeral);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -49,6 +64,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_core, test_2and3returnValues);
 	tcase_add_test(tc_core, test_4returnValue);
 	tcase_add_test(tc_core, test_5returnValue);
+	tcase_add_test(tc_core, test_6to8returnValues);
 	suite_add_tcase(s, tc_core);
 
 	return s;
