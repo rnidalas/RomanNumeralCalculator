@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../src/RomanNumeralCalculator.h"
 
-/* **********************************************************
+/* ******************************************************** *
  *				convertIntToRomanNumeral tests				*
  * ******************************************************** */
 START_TEST(test_1returnValue) {
@@ -23,6 +23,16 @@ START_TEST(test_2and3returnValues) {
 }
 END_TEST
 
+START_TEST(test_4returnValue) {
+	char* numeral = convertIntToRomanNumeral(4);
+	ck_assert_str_eq("IV",numeral);
+	free(numeral);
+}
+END_TEST
+
+/* ******************************************************** *
+ *				Roman Numeral Test Suite					*
+ * ******************************************************** */
 Suite* RomanNumeralCalculatorSuite(void) {
 	Suite *s = suite_create("Test");
 
@@ -30,6 +40,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	TCase *tc_core = tcase_create("convertIntToRomanNumeral");
 	tcase_add_test(tc_core, test_1returnValue);
 	tcase_add_test(tc_core, test_2and3returnValues);
+	tcase_add_test(tc_core, test_4returnValue);
 	suite_add_tcase(s, tc_core);
 
 	return s;
