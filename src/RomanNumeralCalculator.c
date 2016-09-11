@@ -11,12 +11,14 @@ char* convertIntToRomanNumeral(int value) {
 	int i=0;			// index into numeral to prevent buffer overflow
 
 	if(value >= 10) {
-		// Check to prevent buffer overflow
-		if(i < 8) {
+		/* for loop using i to prevent buffer overflow */
+		for(i; i<SIZE_OF_MAX_NUMERAL; i+=1) {
 			strcat(numeral, "X");
-			value -= 10;
+			
+			// Break if numeral completed
+			if((value -= 10) < 10)
+				break;
 		}
-		i += 1;
 	}
 
 	if(value == 9) {
