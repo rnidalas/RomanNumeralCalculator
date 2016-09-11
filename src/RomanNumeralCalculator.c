@@ -10,6 +10,15 @@ char* convertIntToRomanNumeral(int value) {
 	char* numeral = malloc(sizeof(char)*SIZE_OF_MAX_NUMERAL);
 	int i=0;			// index into numeral to prevent buffer overflow
 
+	if(value >= 90) {
+		// Check to prevent buffer overflow
+		if(i < 7) {
+			strcat(numeral, "XC");
+			value -= 90;
+		}
+		i += 2;
+	}
+
 	if(value >= 50) {
 		// Check to prevent buffer overflow
 		if(i < 8) {
@@ -30,7 +39,7 @@ char* convertIntToRomanNumeral(int value) {
 		}
 	}
 
-	if(value == 9) {
+	if(value >= 9) {
 		// Check to prevent buffer overflow
 		if(i < 7) {
 			strcat(numeral, "IX");
@@ -48,7 +57,7 @@ char* convertIntToRomanNumeral(int value) {
 		i += 1;
 	}
 	
-	if(value == 4) {
+	if(value >= 4) {
 		// Check to prevent buffer overflow
 		if(i < 7) {
 			strcat(numeral, "IV");

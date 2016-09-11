@@ -111,6 +111,21 @@ START_TEST(test_lt90returnValue) {
 }
 END_TEST
 
+START_TEST(test_lt100returnValue) {
+	char* numeral = convertIntToRomanNumeral(90);
+	ck_assert_str_eq("XC",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(94);
+	ck_assert_str_eq("XCIV",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(99);
+	ck_assert_str_eq("XCIX",numeral);
+	free(numeral);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -129,6 +144,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_core, test_lt20returnValue);
 	tcase_add_test(tc_core, test_lt50returnValue);
 	tcase_add_test(tc_core, test_lt90returnValue);
+	tcase_add_test(tc_core, test_lt100returnValue);
 	suite_add_tcase(s, tc_core);
 
 	return s;
