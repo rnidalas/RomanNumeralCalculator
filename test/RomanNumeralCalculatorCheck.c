@@ -190,6 +190,29 @@ START_TEST(test_lt1000returnValue) {
 }
 END_TEST
 
+START_TEST(test_lt4000returnValue) {
+	char* numeral = convertIntToRomanNumeral(1000);
+	ck_assert_str_eq("M",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(1006);
+	ck_assert_str_eq("MVI",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(2016);
+	ck_assert_str_eq("MMXVI",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(3437);
+	ck_assert_str_eq("MMMCDXXXVII",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(3999);
+	ck_assert_str_eq("MMMCMXCIX",numeral);
+	free(numeral);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -213,6 +236,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_core, test_lt500returnValue);
 	tcase_add_test(tc_core, test_lt900returnValue);
 	tcase_add_test(tc_core, test_lt1000returnValue);
+	tcase_add_test(tc_core, test_lt4000returnValue);
 	suite_add_tcase(s, tc_core);
 
 	return s;
