@@ -10,6 +10,15 @@ char* convertIntToRomanNumeral(int value) {
 	char* numeral = malloc(sizeof(char)*SIZE_OF_MAX_NUMERAL);
 	int i=0;			// index into numeral to prevent buffer overflow
 
+	if(value >= 900) {
+		// Check to prevent buffer overflow
+		if(i < 7) {
+			strcat(numeral, "CM");
+			value -= 900;
+		}
+		i += 2;
+	}
+
 	if(value >= 500) {
 		// Check to prevent buffer overflow
 		if(i < 8) {
