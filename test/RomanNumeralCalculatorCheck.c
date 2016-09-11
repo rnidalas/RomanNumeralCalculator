@@ -59,6 +59,13 @@ START_TEST(test_9returnValue) {
 }
 END_TEST
 
+START_TEST(test_10returnValue) {
+	char* numeral = convertIntToRomanNumeral(10);
+	ck_assert_str_eq("X",numeral);
+	free(numeral);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -73,6 +80,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_core, test_5returnValue);
 	tcase_add_test(tc_core, test_6to8returnValues);
 	tcase_add_test(tc_core, test_9returnValue);
+	tcase_add_test(tc_core, test_10returnValue);
 	suite_add_tcase(s, tc_core);
 
 	return s;
