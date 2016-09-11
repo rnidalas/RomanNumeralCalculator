@@ -10,6 +10,17 @@ char* convertIntToRomanNumeral(int value) {
 	char* numeral = malloc(sizeof(char)*SIZE_OF_MAX_NUMERAL);
 	int i=0;			// index into numeral to prevent buffer overflow
 
+	if(value >= 100) {
+		/* for loop using i to prevent buffer overflow */
+		for(i; i<SIZE_OF_MAX_NUMERAL; i+=1) {
+			strcat(numeral, "C");
+			
+			// Break if under value
+			if((value -= 100) < 100)
+				break;
+		}
+	}
+
 	if(value >= 90) {
 		// Check to prevent buffer overflow
 		if(i < 7) {
@@ -33,7 +44,7 @@ char* convertIntToRomanNumeral(int value) {
 		for(i; i<SIZE_OF_MAX_NUMERAL; i+=1) {
 			strcat(numeral, "X");
 			
-			// Break if numeral completed
+			// Break if under value
 			if((value -= 10) < 10)
 				break;
 		}
