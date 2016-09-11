@@ -10,6 +10,15 @@ char* convertIntToRomanNumeral(int value) {
 	char* numeral = malloc(sizeof(char)*SIZE_OF_MAX_NUMERAL);
 	int i=0;			// index into numeral to prevent buffer overflow
 
+	if(value >= 500) {
+		// Check to prevent buffer overflow
+		if(i < 8) {
+			strcat(numeral, "D");
+			value -= 500;
+		}
+		i += 1;
+	}
+
 	if(value >= 400) {
 		// Check to prevent buffer overflow
 		if(i < 7) {
@@ -46,6 +55,15 @@ char* convertIntToRomanNumeral(int value) {
 			value -= 50;
 		}
 		i += 1;
+	}
+	
+	if(value >= 40) {
+		// Check to prevent buffer overflow
+		if(i < 7) {
+			strcat(numeral, "XL");
+			value -= 40;
+		}
+		i += 2;
 	}
 
 	if(value >= 10) {

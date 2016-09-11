@@ -87,7 +87,7 @@ START_TEST(test_lt50returnValue) {
 	free(numeral);
 	
 	numeral = convertIntToRomanNumeral(43);
-	ck_assert_str_eq("XXXXIII",numeral);
+	ck_assert_str_eq("XLIII",numeral);
 	free(numeral);
 }
 END_TEST
@@ -152,6 +152,29 @@ START_TEST(test_lt500returnValue) {
 }
 END_TEST
 
+START_TEST(test_lt900returnValue) {
+	char* numeral = convertIntToRomanNumeral(500);
+	ck_assert_str_eq("D",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(548);
+	ck_assert_str_eq("DXLVIII",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(659);
+	ck_assert_str_eq("DCLIX",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(870);
+	ck_assert_str_eq("DCCCLXX",numeral);
+	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(888);
+	ck_assert_str_eq("DCCCLXXXVIII",numeral);
+	free(numeral);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -173,6 +196,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_core, test_lt100returnValue);
 	tcase_add_test(tc_core, test_lt400returnValue);
 	tcase_add_test(tc_core, test_lt500returnValue);
+	tcase_add_test(tc_core, test_lt900returnValue);
 	suite_add_tcase(s, tc_core);
 
 	return s;
