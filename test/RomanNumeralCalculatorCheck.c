@@ -243,6 +243,18 @@ START_TEST(test_5toInt) {
 }
 END_TEST
 
+START_TEST(test_6to8toInt) {
+	int value = convertRomanNumeralToInt("VI");
+	ck_assert_int_eq(6,value);
+	
+	value = convertRomanNumeralToInt("VII");
+	ck_assert_int_eq(7,value);
+	
+	value = convertRomanNumeralToInt("VIII");
+	ck_assert_int_eq(8,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -275,6 +287,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_RomanToInt, test_2and3toInt);
 	tcase_add_test(tc_RomanToInt, test_4toInt);
 	tcase_add_test(tc_RomanToInt, test_5toInt);
+	tcase_add_test(tc_RomanToInt, test_6to8toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;
