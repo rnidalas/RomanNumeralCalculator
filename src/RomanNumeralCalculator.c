@@ -144,10 +144,17 @@ char* convertIntToRomanNumeral(int value) {
  */
 int convertRomanNumeralToInt(char* numeral) {
 	int numeralLength = strlen(numeral);
-	int value = 0, i=0;
+	int value = 0, i = numeralLength-1;
 	
-	for(; i<numeralLength; i++) {
+	for(; i>=0; i--) {
+		if(numeral[i] != 'I') {
+			break;
+		}
 		value++;
+	}
+	
+	if(numeral[i] == 'V' && numeral[i-1] == 'I') {
+		value += 4;
 	}
 	
 	return value;
