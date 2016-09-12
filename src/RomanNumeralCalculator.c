@@ -180,9 +180,11 @@ int convertRomanNumeralToInt(char* numeral) {
 	if(numeral[i] == 'L') {
 		if(i > 0 && numeral[i-1] == 'X') {
 			value += 40;
+			i -= 2;
 		}
 		else {
 			value += 50;
+			i--;
 		}
 	}
 	
@@ -195,7 +197,7 @@ int convertRomanNumeralToInt(char* numeral) {
 			i--;
 		} 
 		else {
-			value += 10;
+			value += 100;
 		}
 	}
 	
