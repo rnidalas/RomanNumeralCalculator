@@ -207,7 +207,7 @@ int convertRomanNumeralToInt(char* numeral) {
 			i -= 2;
 		}
 		else {
-			value += 50;
+			value += 500;
 			i--;
 		}
 	}
