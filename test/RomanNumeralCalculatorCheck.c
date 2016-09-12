@@ -345,6 +345,15 @@ START_TEST(test_lt400toInt) {
 }
 END_TEST
 
+START_TEST(test_lt500toInt) {
+	int value = convertRomanNumeralToInt("CD");
+	ck_assert_int_eq(400,value);
+	
+	value = convertRomanNumeralToInt("CDXLIV");
+	ck_assert_int_eq(444,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -385,6 +394,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_RomanToInt, test_lt90toInt);
 	tcase_add_test(tc_RomanToInt, test_lt100toInt);
 	tcase_add_test(tc_RomanToInt, test_lt400toInt);
+	tcase_add_test(tc_RomanToInt, test_lt500toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;

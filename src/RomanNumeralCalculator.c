@@ -201,5 +201,16 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
+	if(numeral[i] == 'D') {
+		if(i > 0 && numeral[i-1] == 'C') {
+			value += 400;
+			i -= 2;
+		}
+		else {
+			value += 50;
+			i--;
+		}
+	}
+	
 	return value;
 }
