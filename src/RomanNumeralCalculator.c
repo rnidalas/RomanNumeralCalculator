@@ -212,5 +212,18 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
+	for(; i>=0; i--) {
+		if(numeral[i] != 'M') {
+			break;
+		} 
+		else if(i > 0 && numeral[i-1] == 'C') {
+			value += 900;
+			i--;
+		} 
+		else {
+			value += 100;
+		}
+	}
+	
 	return value;
 }

@@ -375,6 +375,18 @@ START_TEST(test_lt900toInt) {
 }
 END_TEST
 
+START_TEST(test_lt1000toInt) {
+	int value = convertRomanNumeralToInt("CM");
+	ck_assert_int_eq(900,value);
+	
+	value = convertRomanNumeralToInt("CMIX");
+	ck_assert_int_eq(909,value);
+	
+	value = convertRomanNumeralToInt("CMXCI");
+	ck_assert_int_eq(991,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -417,6 +429,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_RomanToInt, test_lt400toInt);
 	tcase_add_test(tc_RomanToInt, test_lt500toInt);
 	tcase_add_test(tc_RomanToInt, test_lt900toInt);
+	tcase_add_test(tc_RomanToInt, test_lt1000toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;
