@@ -267,6 +267,15 @@ START_TEST(test_10toInt) {
 }
 END_TEST
 
+START_TEST(test_lt40toInt) {
+	int value = convertRomanNumeralToInt("XXI");
+	ck_assert_int_eq(21,value);
+	
+	value = convertRomanNumeralToInt("XXXII");
+	ck_assert_int_eq(32,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -302,6 +311,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_RomanToInt, test_6to8toInt);
 	tcase_add_test(tc_RomanToInt, test_9toInt);
 	tcase_add_test(tc_RomanToInt, test_10toInt);
+	tcase_add_test(tc_RomanToInt, test_lt40toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;
