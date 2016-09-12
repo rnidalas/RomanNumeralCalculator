@@ -5,14 +5,14 @@
 /* ******************************************************** *
  *				convertIntToRomanNumeral tests				*
  * ******************************************************** */
-START_TEST(test_1returnValue) {
+START_TEST(test_1toRoman) {
 	char* numeral = convertIntToRomanNumeral(1);
 	ck_assert_str_eq("I",numeral);
 	free(numeral);
 }
 END_TEST
 
-START_TEST(test_2and3returnValues) {
+START_TEST(test_2and3toRoman) {
 	char* numeral = convertIntToRomanNumeral(2);
 	ck_assert_str_eq("II",numeral);
 	free(numeral);
@@ -23,21 +23,21 @@ START_TEST(test_2and3returnValues) {
 }
 END_TEST
 
-START_TEST(test_4returnValue) {
+START_TEST(test_4toRoman) {
 	char* numeral = convertIntToRomanNumeral(4);
 	ck_assert_str_eq("IV",numeral);
 	free(numeral);
 }
 END_TEST
 
-START_TEST(test_5returnValue) {
+START_TEST(test_5toRoman) {
 	char* numeral = convertIntToRomanNumeral(5);
 	ck_assert_str_eq("V",numeral);
 	free(numeral);
 }
 END_TEST
 
-START_TEST(test_6to8returnValues) {
+START_TEST(test_6to8toRoman) {
 	char* numeral = convertIntToRomanNumeral(6);
 	ck_assert_str_eq("VI",numeral);
 	free(numeral);
@@ -52,21 +52,21 @@ START_TEST(test_6to8returnValues) {
 }
 END_TEST
 
-START_TEST(test_9returnValue) {
+START_TEST(test_9toRoman) {
 	char* numeral = convertIntToRomanNumeral(9);
 	ck_assert_str_eq("IX",numeral);
 	free(numeral);
 }
 END_TEST
 
-START_TEST(test_10returnValue) {
+START_TEST(test_10toRoman) {
 	char* numeral = convertIntToRomanNumeral(10);
 	ck_assert_str_eq("X",numeral);
 	free(numeral);
 }
 END_TEST
 
-START_TEST(test_lt20returnValue) {
+START_TEST(test_lt20toRoman) {
 	char* numeral = convertIntToRomanNumeral(14);
 	ck_assert_str_eq("XIV",numeral);
 	free(numeral);
@@ -77,7 +77,7 @@ START_TEST(test_lt20returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt50returnValue) {
+START_TEST(test_lt50toRoman) {
 	char* numeral = convertIntToRomanNumeral(21);
 	ck_assert_str_eq("XXI",numeral);
 	free(numeral);
@@ -92,7 +92,7 @@ START_TEST(test_lt50returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt90returnValue) {
+START_TEST(test_lt90toRoman) {
 	char* numeral = convertIntToRomanNumeral(50);
 	ck_assert_str_eq("L",numeral);
 	free(numeral);
@@ -111,7 +111,7 @@ START_TEST(test_lt90returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt100returnValue) {
+START_TEST(test_lt100toRoman) {
 	char* numeral = convertIntToRomanNumeral(90);
 	ck_assert_str_eq("XC",numeral);
 	free(numeral);
@@ -126,7 +126,7 @@ START_TEST(test_lt100returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt400returnValue) {
+START_TEST(test_lt400toRoman) {
 	char* numeral = convertIntToRomanNumeral(100);
 	ck_assert_str_eq("C",numeral);
 	free(numeral);
@@ -141,7 +141,7 @@ START_TEST(test_lt400returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt500returnValue) {
+START_TEST(test_lt500toRoman) {
 	char* numeral = convertIntToRomanNumeral(437);
 	ck_assert_str_eq("CDXXXVII",numeral);
 	free(numeral);
@@ -152,7 +152,7 @@ START_TEST(test_lt500returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt900returnValue) {
+START_TEST(test_lt900toRoman) {
 	char* numeral = convertIntToRomanNumeral(500);
 	ck_assert_str_eq("D",numeral);
 	free(numeral);
@@ -175,7 +175,7 @@ START_TEST(test_lt900returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt1000returnValue) {
+START_TEST(test_lt1000toRoman) {
 	char* numeral = convertIntToRomanNumeral(900);
 	ck_assert_str_eq("CM",numeral);
 	free(numeral);
@@ -190,7 +190,7 @@ START_TEST(test_lt1000returnValue) {
 }
 END_TEST
 
-START_TEST(test_lt4000returnValue) {
+START_TEST(test_lt4000toRoman) {
 	char* numeral = convertIntToRomanNumeral(1000);
 	ck_assert_str_eq("M",numeral);
 	free(numeral);
@@ -214,6 +214,11 @@ START_TEST(test_lt4000returnValue) {
 END_TEST
 
 /* ******************************************************** *
+ *				convertRomanNumeralToInt tests				*
+ * ******************************************************** */
+
+
+/* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
 Suite* RomanNumeralCalculatorSuite(void) {
@@ -221,22 +226,22 @@ Suite* RomanNumeralCalculatorSuite(void) {
 
 	/* convertIntToRomanNumeral test cases */
 	TCase *tc_core = tcase_create("convertIntToRomanNumeral");
-	tcase_add_test(tc_core, test_1returnValue);
-	tcase_add_test(tc_core, test_2and3returnValues);
-	tcase_add_test(tc_core, test_4returnValue);
-	tcase_add_test(tc_core, test_5returnValue);
-	tcase_add_test(tc_core, test_6to8returnValues);
-	tcase_add_test(tc_core, test_9returnValue);
-	tcase_add_test(tc_core, test_10returnValue);
-	tcase_add_test(tc_core, test_lt20returnValue);
-	tcase_add_test(tc_core, test_lt50returnValue);
-	tcase_add_test(tc_core, test_lt90returnValue);
-	tcase_add_test(tc_core, test_lt100returnValue);
-	tcase_add_test(tc_core, test_lt400returnValue);
-	tcase_add_test(tc_core, test_lt500returnValue);
-	tcase_add_test(tc_core, test_lt900returnValue);
-	tcase_add_test(tc_core, test_lt1000returnValue);
-	tcase_add_test(tc_core, test_lt4000returnValue);
+	tcase_add_test(tc_core, test_1toRoman);
+	tcase_add_test(tc_core, test_2and3toRoman);
+	tcase_add_test(tc_core, test_4toRoman);
+	tcase_add_test(tc_core, test_5toRoman);
+	tcase_add_test(tc_core, test_6to8toRoman);
+	tcase_add_test(tc_core, test_9toRoman);
+	tcase_add_test(tc_core, test_10toRoman);
+	tcase_add_test(tc_core, test_lt20toRoman);
+	tcase_add_test(tc_core, test_lt50toRoman);
+	tcase_add_test(tc_core, test_lt90toRoman);
+	tcase_add_test(tc_core, test_lt100toRoman);
+	tcase_add_test(tc_core, test_lt400toRoman);
+	tcase_add_test(tc_core, test_lt500toRoman);
+	tcase_add_test(tc_core, test_lt900toRoman);
+	tcase_add_test(tc_core, test_lt1000toRoman);
+	tcase_add_test(tc_core, test_lt4000toRoman);
 	suite_add_tcase(s, tc_core);
 
 	return s;

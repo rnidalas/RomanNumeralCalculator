@@ -5,6 +5,7 @@
 static const int SIZE_OF_MAX_NUMERAL = 10;	// max Roman Numeral is 3999 - "MMMCMXCIX"
 
 // Library functions
-char* convertIntToRomanNumeral(int value);
+char*	convertIntToRomanNumeral(int value);
+int		convertRomanNumeralToInt(char* numeral);
 
 #endif /* ROMANNUMERALCALCULATOR_H */

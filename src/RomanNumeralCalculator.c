@@ -137,3 +137,11 @@ char* convertIntToRomanNumeral(int value) {
 
 	return numeral;
 }
+
+/* Function convertRomanNumeralToInt
+ * Input parameters: 	Roman Numeral value (in range [1,3999] to convert to integer
+ * Returns:				integer value of roman numeral
+ */
+int convertRomanNumeralToInt(char* numeral) {
+	
+}
