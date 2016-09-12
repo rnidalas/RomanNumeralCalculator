@@ -216,7 +216,11 @@ END_TEST
 /* ******************************************************** *
  *				convertRomanNumeralToInt tests				*
  * ******************************************************** */
-
+START_TEST(test_1toInt) {
+	int value = convertRomanNumeralToInt("I");
+	ck_assert_int_eq(1,value);
+}
+END_TEST
 
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
@@ -225,24 +229,29 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	Suite *s = suite_create("Test");
 
 	/* convertIntToRomanNumeral test cases */
-	TCase *tc_core = tcase_create("convertIntToRomanNumeral");
-	tcase_add_test(tc_core, test_1toRoman);
-	tcase_add_test(tc_core, test_2and3toRoman);
-	tcase_add_test(tc_core, test_4toRoman);
-	tcase_add_test(tc_core, test_5toRoman);
-	tcase_add_test(tc_core, test_6to8toRoman);
-	tcase_add_test(tc_core, test_9toRoman);
-	tcase_add_test(tc_core, test_10toRoman);
-	tcase_add_test(tc_core, test_lt20toRoman);
-	tcase_add_test(tc_core, test_lt50toRoman);
-	tcase_add_test(tc_core, test_lt90toRoman);
-	tcase_add_test(tc_core, test_lt100toRoman);
-	tcase_add_test(tc_core, test_lt400toRoman);
-	tcase_add_test(tc_core, test_lt500toRoman);
-	tcase_add_test(tc_core, test_lt900toRoman);
-	tcase_add_test(tc_core, test_lt1000toRoman);
-	tcase_add_test(tc_core, test_lt4000toRoman);
-	suite_add_tcase(s, tc_core);
+	TCase *tc_IntToRoman = tcase_create("convertIntToRomanNumeral");
+	tcase_add_test(tc_IntToRoman, test_1toRoman);
+	tcase_add_test(tc_IntToRoman, test_2and3toRoman);
+	tcase_add_test(tc_IntToRoman, test_4toRoman);
+	tcase_add_test(tc_IntToRoman, test_5toRoman);
+	tcase_add_test(tc_IntToRoman, test_6to8toRoman);
+	tcase_add_test(tc_IntToRoman, test_9toRoman);
+	tcase_add_test(tc_IntToRoman, test_10toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt20toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt50toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt90toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt100toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt400toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt500toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt900toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt1000toRoman);
+	tcase_add_test(tc_IntToRoman, test_lt4000toRoman);
+	suite_add_tcase(s, tc_IntToRoman);
+	
+	/* convertRomanNumeralToInt test cases */
+	TCase *tc_RomanToInt = tcase_create("convertRomanNumeralToInt");
+	tcase_add_test(tc_RomanToInt, test_1toInt);
+	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;
 }

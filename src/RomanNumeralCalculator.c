@@ -143,5 +143,5 @@ char* convertIntToRomanNumeral(int value) {
  * Returns:				integer value of roman numeral
  */
 int convertRomanNumeralToInt(char* numeral) {
-	
+	return 1;
 }
