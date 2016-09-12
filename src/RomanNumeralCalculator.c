@@ -221,7 +221,7 @@ int convertRomanNumeralToInt(char* numeral) {
 			i--;
 		} 
 		else {
-			value += 100;
+			value += 1000;
 		}
 	}
 	

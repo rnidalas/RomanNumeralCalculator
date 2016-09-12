@@ -387,6 +387,27 @@ START_TEST(test_lt1000toInt) {
 }
 END_TEST
 
+START_TEST(test_lt4000toInt) {
+	int value = convertRomanNumeralToInt("M");
+	ck_assert_int_eq(1000,value);
+	
+	value = convertRomanNumeralToInt("MI");
+	ck_assert_int_eq(1001,value);
+	
+	value = convertRomanNumeralToInt("MMXVI");
+	ck_assert_int_eq(2016,value);
+	
+	value = convertRomanNumeralToInt("MMCCLXVII");
+	ck_assert_int_eq(2267,value);
+	
+	value = convertRomanNumeralToInt("MMMCCCXXXIII");
+	ck_assert_int_eq(3333,value);
+	
+	value = convertRomanNumeralToInt("MMMCMXCIX");
+	ck_assert_int_eq(3999,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -430,6 +451,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_RomanToInt, test_lt500toInt);
 	tcase_add_test(tc_RomanToInt, test_lt900toInt);
 	tcase_add_test(tc_RomanToInt, test_lt1000toInt);
+	tcase_add_test(tc_RomanToInt, test_lt4000toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;
