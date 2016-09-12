@@ -255,6 +255,12 @@ START_TEST(test_6to8toInt) {
 }
 END_TEST
 
+START_TEST(test_9toInt) {
+	int value = convertRomanNumeralToInt("IX");
+	ck_assert_int_eq(9,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -288,6 +294,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_RomanToInt, test_4toInt);
 	tcase_add_test(tc_RomanToInt, test_5toInt);
 	tcase_add_test(tc_RomanToInt, test_6to8toInt);
+	tcase_add_test(tc_RomanToInt, test_9toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;
