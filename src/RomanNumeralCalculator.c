@@ -170,7 +170,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		} 
 		else if(i > 0 && numeral[i-1] == 'I') {
 			value += 9;
-			i --;
+			i--;
 		} 
 		else {
 			value += 10;
@@ -183,6 +183,19 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 		else {
 			value += 50;
+		}
+	}
+	
+	for(; i>=0; i--) {
+		if(numeral[i] != 'C') {
+			break;
+		} 
+		else if(i > 0 && numeral[i-1] == 'X') {
+			value += 90;
+			i--;
+		} 
+		else {
+			value += 10;
 		}
 	}
 	
