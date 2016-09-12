@@ -222,6 +222,15 @@ START_TEST(test_1toInt) {
 }
 END_TEST
 
+START_TEST(test_2and3toInt) {
+	int value = convertRomanNumeralToInt("II");
+	ck_assert_int_eq(2,value);
+	
+	value = convertRomanNumeralToInt("III");
+	ck_assert_int_eq(3,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -251,6 +260,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	/* convertRomanNumeralToInt test cases */
 	TCase *tc_RomanToInt = tcase_create("convertRomanNumeralToInt");
 	tcase_add_test(tc_RomanToInt, test_1toInt);
+	tcase_add_test(tc_RomanToInt, test_2and3toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;

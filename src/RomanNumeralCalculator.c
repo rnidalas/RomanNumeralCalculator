@@ -12,7 +12,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 1000) {
 		/* for loop using i to prevent buffer overflow */
-		for(i; i<SIZE_OF_MAX_NUMERAL; i+=1) {
+		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
 			strcat(numeral, "M");
 			
 			// Break if under value
@@ -50,7 +50,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 100) {
 		/* for loop using i to prevent buffer overflow */
-		for(i; i<SIZE_OF_MAX_NUMERAL; i+=1) {
+		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
 			strcat(numeral, "C");
 			
 			// Break if under value
@@ -88,7 +88,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 10) {
 		/* for loop using i to prevent buffer overflow */
-		for(i; i<SIZE_OF_MAX_NUMERAL; i+=1) {
+		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
 			strcat(numeral, "X");
 			
 			// Break if under value
@@ -126,7 +126,7 @@ char* convertIntToRomanNumeral(int value) {
 	
 	if(value > 0) {
 		/* for loop using i to prevent buffer overflow */
-		for(i; i<SIZE_OF_MAX_NUMERAL; i+=1) {
+		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
 			strcat(numeral, "I");
 			
 			// Break if numeral completed
@@ -143,5 +143,12 @@ char* convertIntToRomanNumeral(int value) {
  * Returns:				integer value of roman numeral
  */
 int convertRomanNumeralToInt(char* numeral) {
-	return 1;
+	int numeralLength = strlen(numeral);
+	int value = 0, i=0;
+	
+	for(; i<numeralLength; i++) {
+		value++;
+	}
+	
+	return value;
 }
