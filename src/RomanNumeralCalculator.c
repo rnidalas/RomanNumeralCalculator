@@ -153,8 +153,12 @@ int convertRomanNumeralToInt(char* numeral) {
 		value++;
 	}
 	
-	if(numeral[i] == 'V' && numeral[i-1] == 'I') {
-		value += 4;
+	if(numeral[i] == 'V') {
+		if(i > 0 && numeral[i-1] == 'I') {
+			value += 4;
+		} else {
+			value += 5;
+		}
 	}
 	
 	return value;
