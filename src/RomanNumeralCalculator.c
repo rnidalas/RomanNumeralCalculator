@@ -161,8 +161,12 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
-	if(numeral[i] == 'X' && numeral[i-1] == 'I') {
-		value += 9;
+	if(numeral[i] == 'X') {
+		if(i > 0 && numeral[i-1] == 'I') {
+			value += 9;
+		} else {
+			value += 10;
+		}
 	}
 	
 	return value;
