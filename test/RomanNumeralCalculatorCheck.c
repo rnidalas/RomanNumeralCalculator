@@ -291,6 +291,21 @@ START_TEST(test_lt50toInt) {
 }
 END_TEST
 
+START_TEST(test_lt90toInt) {
+	int value = convertRomanNumeralToInt("L");
+	ck_assert_int_eq(50,value);
+	
+	value = convertRomanNumeralToInt("LVII");
+	ck_assert_int_eq(57,value);
+	
+	value = convertRomanNumeralToInt("LXVI");
+	ck_assert_int_eq(66,value);
+	
+	value = convertRomanNumeralToInt("LXXVIII");
+	ck_assert_int_eq(78,value);
+}
+END_TEST
+
 /* ******************************************************** *
  *				Roman Numeral Test Suite					*
  * ******************************************************** */
@@ -328,6 +343,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_RomanToInt, test_10toInt);
 	tcase_add_test(tc_RomanToInt, test_lt40toInt);
 	tcase_add_test(tc_RomanToInt, test_lt50toInt);
+	tcase_add_test(tc_RomanToInt, test_lt90toInt);
 	suite_add_tcase(s, tc_RomanToInt);
 
 	return s;
