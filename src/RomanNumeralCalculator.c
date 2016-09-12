@@ -156,19 +156,33 @@ int convertRomanNumeralToInt(char* numeral) {
 	if(numeral[i] == 'V') {
 		if(i > 0 && numeral[i-1] == 'I') {
 			value += 4;
-		} else {
+			i -= 2;
+		} 
+		else {
 			value += 5;
+			i--;
 		}
 	}
 	
 	for(; i>=0; i--) {
-		if(numeral[i] == 'X') {
-			if(i > 0 && numeral[i-1] == 'I') {
-				value += 9;
-				break;
-			} else {
-				value += 10;
-			}
+		if(numeral[i] != 'X') {
+			break;
+		} 
+		else if(i > 0 && numeral[i-1] == 'I') {
+			value += 9;
+			break;
+		} 
+		else {
+			value += 10;
+		}
+	}
+	
+	if(numeral[i] == 'L') {
+		if(i > 0 && numeral[i-1] == 'X') {
+			value += 40;
+		}
+		else {
+			value += 50;
 		}
 	}
 	
