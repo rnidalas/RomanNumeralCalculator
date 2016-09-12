@@ -303,6 +303,9 @@ START_TEST(test_lt90toInt) {
 	
 	value = convertRomanNumeralToInt("LXXVIII");
 	ck_assert_int_eq(78,value);
+	
+	value = convertRomanNumeralToInt("LXXXIX");
+	ck_assert_int_eq(89,value);
 }
 END_TEST
 

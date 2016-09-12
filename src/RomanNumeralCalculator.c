@@ -170,7 +170,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		} 
 		else if(i > 0 && numeral[i-1] == 'I') {
 			value += 9;
-			break;
+			i --;
 		} 
 		else {
 			value += 10;
