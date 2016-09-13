@@ -30,7 +30,7 @@ START_TEST(test_additionLoopTest) {
 	char* sum;
 	int j, sumValue;
 	
-	for(j=_i; j<3999-_i; j++) {
+	for(j=1; j<3999-_i; j++) {
 		numeral2 = convertIntToRomanNumeral(j);
 		sum = RomanNumeralAddition(numeral1, numeral2);
 		sumValue = convertRomanNumeralToInt(sum);
@@ -523,22 +523,22 @@ END_TEST
 Suite* RomanNumeralCalculatorSuite(void) {
 	Suite *s = suite_create("Test");
 
+	/* Loop tests */
+	TCase *tc_loopTests = tcase_create("LoopTests");
+	tcase_add_loop_test(tc_loopTests, test_additionLoopTest,1,4000);
+	tcase_add_loop_test(tc_loopTests, test_subtractionLoopTest,1,4000);
+	tcase_add_loop_test(tc_loopTests, test_conversionLoopVerification, 1, 4000);
+	suite_add_tcase(s, tc_loopTests);
+
 	/* Addition test cases */
 	TCase *tc_additionTest = tcase_create("AdditionTests");
 	tcase_add_test(tc_additionTest, test_sampleAdditionTests);
-	tcase_add_loop_test(tc_additionTest, test_additionLoopTest,1,2000);
 	suite_add_tcase(s, tc_additionTest);
 	
 	/* Subtraction test cases */
 	TCase *tc_subtractionTest = tcase_create("SubtractionTests");
 	tcase_add_test(tc_subtractionTest, test_sampleSubtractionTests);
-	tcase_add_loop_test(tc_subtractionTest, test_subtractionLoopTest,1,4000);
 	suite_add_tcase(s, tc_subtractionTest);
-
-	/* loop test conversion/counter-conversion */
-	TCase *tc_conversionLoopVerify = tcase_create("conversionLoopVerification");
-	tcase_add_loop_test(tc_conversionLoopVerify, test_conversionLoopVerification, 1, 4000);
-	suite_add_tcase(s, tc_conversionLoopVerify);
 
 	/* convertIntToRomanNumeral test cases */
 	TCase *tc_IntToRoman = tcase_create("convertIntToRomanNumeral");
