@@ -22,7 +22,7 @@ char* RomanNumeralAddition(const char* numeral1, const char* numeral2) {
 char* RomanNumeralSubtraction(const char* numeral1, const char* numeral2) {
 	int value1 = convertRomanNumeralToInt(numeral1);
 	int value2 = convertRomanNumeralToInt(numeral2);
-	char* dif = convertIntToRomanNumeral( value1 - value2 );
+	char* dif = convertIntToRomanNumeral( abs(value1 - value2) );
 	return dif;
 }
 

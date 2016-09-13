@@ -64,6 +64,27 @@ START_TEST(test_sampleSubtractionTests) {
 }
 END_TEST
 
+START_TEST(test_subtractionLoopTest) {
+	char* numeral1 = convertIntToRomanNumeral(_i);
+	char* numeral2;
+	char* dif;
+	int j, difValue;
+	
+	for(j=_i; j<4000; j++) {
+		if(_i == j) {
+			continue;
+		}
+		numeral2 = convertIntToRomanNumeral(j);
+		dif = RomanNumeralSubtraction(numeral1, numeral2);
+		difValue = convertRomanNumeralToInt(dif);
+		ck_assert_int_eq(difValue, abs(_i-j) );
+		free(numeral2);
+		free(dif);
+	}
+	free(numeral1);
+}
+END_TEST
+
 /* ******************************************************** *
  *		loop test for both conversion functions				*
  * ******************************************************** */
@@ -511,6 +532,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	/* Subtraction test cases */
 	TCase *tc_subtractionTest = tcase_create("SubtractionTests");
 	tcase_add_test(tc_subtractionTest, test_sampleSubtractionTests);
+	tcase_add_loop_test(tc_subtractionTest, test_subtractionLoopTest,1,4000);
 	suite_add_tcase(s, tc_subtractionTest);
 
 	/* loop test conversion/counter-conversion */
