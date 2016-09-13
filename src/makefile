@@ -13,7 +13,7 @@ all: main
 main: $(OBJECTS) main.c
 	$(CC) $(CFLAGS) -o main main.c $(OBJECTS)
 
-RomanNumeralCalculator.o:
+RomanNumeralCalculator.o: RomanNumeralCalculator.h
 
 .PHONY: clean
 clean:

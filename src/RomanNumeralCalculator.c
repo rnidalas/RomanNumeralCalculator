@@ -23,7 +23,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 900) {
 		// Check to prevent buffer overflow
-		if(i < 7) {
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
 			strcat(numeral, "CM");
 			value -= 900;
 		}
@@ -32,7 +32,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 500) {
 		// Check to prevent buffer overflow
-		if(i < 8) {
+		if(i < SIZE_OF_MAX_NUMERAL-2) {
 			strcat(numeral, "D");
 			value -= 500;
 		}
@@ -41,7 +41,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 400) {
 		// Check to prevent buffer overflow
-		if(i < 7) {
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
 			strcat(numeral, "CD");
 			value -= 400;
 		}
@@ -61,7 +61,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 90) {
 		// Check to prevent buffer overflow
-		if(i < 7) {
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
 			strcat(numeral, "XC");
 			value -= 90;
 		}
@@ -70,7 +70,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 50) {
 		// Check to prevent buffer overflow
-		if(i < 8) {
+		if(i < SIZE_OF_MAX_NUMERAL-2) {
 			strcat(numeral, "L");
 			value -= 50;
 		}
@@ -79,7 +79,7 @@ char* convertIntToRomanNumeral(int value) {
 	
 	if(value >= 40) {
 		// Check to prevent buffer overflow
-		if(i < 7) {
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
 			strcat(numeral, "XL");
 			value -= 40;
 		}
@@ -99,7 +99,7 @@ char* convertIntToRomanNumeral(int value) {
 
 	if(value >= 9) {
 		// Check to prevent buffer overflow
-		if(i < 7) {
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
 			strcat(numeral, "IX");
 			value -= 9;
 		}
@@ -108,7 +108,7 @@ char* convertIntToRomanNumeral(int value) {
 	
 	if(value >= 5) {
 		// Check to prevent buffer overflow
-		if(i < 8) {
+		if(i < SIZE_OF_MAX_NUMERAL-2) {
 			strcat(numeral, "V");
 			value -= 5;
 		}
@@ -117,7 +117,7 @@ char* convertIntToRomanNumeral(int value) {
 	
 	if(value >= 4) {
 		// Check to prevent buffer overflow
-		if(i < 7) {
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
 			strcat(numeral, "IV");
 			value -= 4;
 		}

@@ -3,6 +3,28 @@
 #include "../src/RomanNumeralCalculator.h"
 
 /* ******************************************************** *
+ *		loop test for both conversion functions				*
+ * ******************************************************** */
+START_TEST(test_conversionLoopVerification) {
+	/* variable _i available through check.h tcase_add_loop_test
+	 * 
+	 * test case looped for valid Roman Numeral domain [1,3999]
+	 * 
+	 * test functions by passing successive values (based on i)
+	 * into Roman Numeral conversion, and passing the returned
+	 * Roman Numeral through the reverse conversion, giving back
+	 * the initial value */
+	 
+	 char* numeral = convertIntToRomanNumeral(_i);
+	 int value = convertRomanNumeralToInt(numeral);
+	 free(numeral);
+	 
+	 // 'value' output should equal '_i' input
+	 ck_assert_int_eq(_i,value);
+}
+END_TEST
+
+/* ******************************************************** *
  *				convertIntToRomanNumeral tests				*
  * ******************************************************** */
 START_TEST(test_1toRoman) {
@@ -210,6 +232,10 @@ START_TEST(test_lt4000toRoman) {
 	numeral = convertIntToRomanNumeral(3999);
 	ck_assert_str_eq("MMMCMXCIX",numeral);
 	free(numeral);
+	
+	numeral = convertIntToRomanNumeral(2884);
+	ck_assert_str_eq("MMDCCCLXXXIV",numeral);
+	free(numeral);
 }
 END_TEST
 
@@ -413,6 +439,11 @@ END_TEST
  * ******************************************************** */
 Suite* RomanNumeralCalculatorSuite(void) {
 	Suite *s = suite_create("Test");
+
+	/* loop test conversion/counter-conversion */
+	TCase *tc_conversionLoopVerify = tcase_create("conversionLoopVerification");
+	tcase_add_loop_test(tc_conversionLoopVerify, test_conversionLoopVerification, 1, 4000);
+	suite_add_tcase(s, tc_conversionLoopVerify);
 
 	/* convertIntToRomanNumeral test cases */
 	TCase *tc_IntToRoman = tcase_create("convertIntToRomanNumeral");
