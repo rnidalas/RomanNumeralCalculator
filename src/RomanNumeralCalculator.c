@@ -141,11 +141,15 @@ char* convertIntToRomanNumeral(int value) {
 /* Function convertRomanNumeralToInt
  * Input parameters: 	Roman Numeral value (in range [1,3999] to convert to integer
  * Returns:				integer value of roman numeral
+ * 
+ * Function assumes well formatted input numeral
  */
 int convertRomanNumeralToInt(char* numeral) {
 	int numeralLength = strlen(numeral);
 	int value = 0, i = numeralLength-1;
 	
+	/* start with i value at end of numeral string and iterate back
+	 * I values found at the end of numeral, loop for multiples */
 	for(; i>=0; i--) {
 		if(numeral[i] != 'I') {
 			break;
@@ -153,6 +157,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		value++;
 	}
 	
+	/* Check for values of 4 and 5 */
 	if(numeral[i] == 'V') {
 		if(i > 0 && numeral[i-1] == 'I') {
 			value += 4;
@@ -164,6 +169,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
+	/* Check for values of 10, loop for multiples */
 	for(; i>=0; i--) {
 		if(numeral[i] != 'X') {
 			break;
@@ -177,6 +183,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
+	/* Check for values of 40 and 50 */
 	if(numeral[i] == 'L') {
 		if(i > 0 && numeral[i-1] == 'X') {
 			value += 40;
@@ -188,6 +195,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
+	/* Check for values of 90 and 100, loop for multiples */
 	for(; i>=0; i--) {
 		if(numeral[i] != 'C') {
 			break;
@@ -201,6 +209,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
+	/* Check for values of 400 and 500 */
 	if(numeral[i] == 'D') {
 		if(i > 0 && numeral[i-1] == 'C') {
 			value += 400;
@@ -212,6 +221,7 @@ int convertRomanNumeralToInt(char* numeral) {
 		}
 	}
 	
+	/* Check for values of 900 and 1000, loop for multiples */
 	for(; i>=0; i--) {
 		if(numeral[i] != 'M') {
 			break;
