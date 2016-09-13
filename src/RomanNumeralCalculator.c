@@ -10,7 +10,8 @@
 char* RomanNumeralAddition(const char* numeral1, const char* numeral2) {
 	int value1 = convertRomanNumeralToInt(numeral1);
 	int value2 = convertRomanNumeralToInt(numeral2);
-	return convertIntToRomanNumeral( value1 + value2 );
+	char* sum = convertIntToRomanNumeral( value1 + value2 );
+	return sum;
 }
 
 /* Function convertIntToRomanNumeral
@@ -20,6 +21,9 @@ char* RomanNumeralAddition(const char* numeral1, const char* numeral2) {
 char* convertIntToRomanNumeral(int value) {
 	char* numeral = malloc(sizeof(char)*SIZE_OF_MAX_NUMERAL);
 	int i=0;			// index into numeral to prevent buffer overflow
+	
+	/* Ensure numeral string initially empty */
+	strcpy(numeral,"");
 
 	if(value >= 1000) {
 		/* for loop using i to prevent buffer overflow */

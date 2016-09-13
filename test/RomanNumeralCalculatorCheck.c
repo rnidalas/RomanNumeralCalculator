@@ -24,6 +24,24 @@ START_TEST(test_sampleAdditionTests) {
 }
 END_TEST
 
+START_TEST(test_additionLoopTest) {
+	char* numeral1 = convertIntToRomanNumeral(_i);
+	char* numeral2;
+	char* sum;
+	int j, sumValue;
+	
+	for(j=_i; j<3999-_i; j++) {
+		numeral2 = convertIntToRomanNumeral(j);
+		sum = RomanNumeralAddition(numeral1, numeral2);
+		sumValue = convertRomanNumeralToInt(sum);
+		ck_assert_int_eq(sumValue, _i+j);
+		free(numeral2);
+		free(sum);
+	}
+	free(numeral1);
+}
+END_TEST
+
 /* ******************************************************** *
  *		loop test for both conversion functions				*
  * ******************************************************** */
@@ -465,6 +483,7 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	/* Addition test cases */
 	TCase *tc_additionTest = tcase_create("AdditionTests");
 	tcase_add_test(tc_additionTest, test_sampleAdditionTests);
+	tcase_add_loop_test(tc_additionTest, test_additionLoopTest,1,2000);
 	suite_add_tcase(s, tc_additionTest);
 
 	/* loop test conversion/counter-conversion */
