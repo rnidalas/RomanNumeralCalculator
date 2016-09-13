@@ -3,6 +3,28 @@
 #include "../src/RomanNumeralCalculator.h"
 
 /* ******************************************************** *
+ * 						Addition Tests						*
+ * ******************************************************** */
+START_TEST(test_sampleAdditionTests) {
+	char* sum = RomanNumeralAddition("II", "II");
+	ck_assert_str_eq("IV",sum);
+	free(sum);
+	
+	sum = RomanNumeralAddition("D", "D");	// 500 + 500 = 1000
+	ck_assert_str_eq("M",sum);
+	free(sum);
+	
+	sum = RomanNumeralAddition("DIV", "V");	// 504 + 5 = 509
+	ck_assert_str_eq("DIX",sum);
+	free(sum);
+	
+	sum = RomanNumeralAddition("CMXLVIII", "DCCXXXIII");	// 948 + 733 = 1681
+	ck_assert_str_eq("MDCLXXXI",sum);
+	free(sum);
+}
+END_TEST
+
+/* ******************************************************** *
  *		loop test for both conversion functions				*
  * ******************************************************** */
 START_TEST(test_conversionLoopVerification) {
@@ -439,6 +461,11 @@ END_TEST
  * ******************************************************** */
 Suite* RomanNumeralCalculatorSuite(void) {
 	Suite *s = suite_create("Test");
+
+	/* Addition test cases */
+	TCase *tc_additionTest = tcase_create("AdditionTests");
+	tcase_add_test(tc_additionTest, test_sampleAdditionTests);
+	suite_add_tcase(s, tc_additionTest);
 
 	/* loop test conversion/counter-conversion */
 	TCase *tc_conversionLoopVerify = tcase_create("conversionLoopVerification");

@@ -2,6 +2,17 @@
 #include <string.h>
 #include "RomanNumeralCalculator.h"
 
+/* Function RomanNumeralAddition
+ * Input parameters: 	numeral1 - pointer to first roman numeral
+ * 						numeral2 - pointer to second roman numeral
+ * Returns:				pointer to roman numeral sum of numeral1 and numeral2
+ */
+char* RomanNumeralAddition(const char* numeral1, const char* numeral2) {
+	int value1 = convertRomanNumeralToInt(numeral1);
+	int value2 = convertRomanNumeralToInt(numeral2);
+	return convertIntToRomanNumeral( value1 + value2 );
+}
+
 /* Function convertIntToRomanNumeral
  * Input parameters: 	integer value (in range [1,3999] to convert to Roman Numeral
  * Returns:				character pointer to roman numeral cstring
@@ -144,7 +155,7 @@ char* convertIntToRomanNumeral(int value) {
  * 
  * Function assumes well formatted input numeral
  */
-int convertRomanNumeralToInt(char* numeral) {
+int convertRomanNumeralToInt(const char* numeral) {
 	int numeralLength = strlen(numeral);
 	int value = 0, i = numeralLength-1;
 	
