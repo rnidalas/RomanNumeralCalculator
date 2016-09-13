@@ -14,6 +14,18 @@ char* RomanNumeralAddition(const char* numeral1, const char* numeral2) {
 	return sum;
 }
 
+/* Function RomanNumeralSubtraction
+ * Input parameters: 	numeral1 - pointer to first roman numeral
+ * 						numeral2 - pointer to second roman numeral
+ * Returns:				pointer to roman numeral difference of numeral1 and numeral2
+ */
+char* RomanNumeralSubtraction(const char* numeral1, const char* numeral2) {
+	int value1 = convertRomanNumeralToInt(numeral1);
+	int value2 = convertRomanNumeralToInt(numeral2);
+	char* dif = convertIntToRomanNumeral( value1 - value2 );
+	return dif;
+}
+
 /* Function convertIntToRomanNumeral
  * Input parameters: 	integer value (in range [1,3999] to convert to Roman Numeral
  * Returns:				character pointer to roman numeral cstring

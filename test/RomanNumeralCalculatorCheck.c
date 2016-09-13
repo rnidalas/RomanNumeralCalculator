@@ -43,6 +43,28 @@ START_TEST(test_additionLoopTest) {
 END_TEST
 
 /* ******************************************************** *
+ * 					Subtraction Tests						*
+ * ******************************************************** */
+START_TEST(test_sampleSubtractionTests) {
+	char* dif = RomanNumeralSubtraction("IV", "II");	// 4 - 2 = 2
+	ck_assert_str_eq("II",dif);
+	free(dif);
+	
+	dif = RomanNumeralSubtraction("M", "D");	// 1000 - 500 = 500
+	ck_assert_str_eq("D",dif);
+	free(dif);
+	
+	dif = RomanNumeralSubtraction("DIX", "V");	// 509 - 5 = 504
+	ck_assert_str_eq("DIV",dif);
+	free(dif);
+	
+	dif = RomanNumeralSubtraction("MDCLXXXI", "DCCXXXIII");	// 1681 - 733 = 948
+	ck_assert_str_eq("CMXLVIII",dif);
+	free(dif);
+}
+END_TEST
+
+/* ******************************************************** *
  *		loop test for both conversion functions				*
  * ******************************************************** */
 START_TEST(test_conversionLoopVerification) {
@@ -485,6 +507,11 @@ Suite* RomanNumeralCalculatorSuite(void) {
 	tcase_add_test(tc_additionTest, test_sampleAdditionTests);
 	tcase_add_loop_test(tc_additionTest, test_additionLoopTest,1,2000);
 	suite_add_tcase(s, tc_additionTest);
+	
+	/* Subtraction test cases */
+	TCase *tc_subtractionTest = tcase_create("SubtractionTests");
+	tcase_add_test(tc_subtractionTest, test_sampleSubtractionTests);
+	suite_add_tcase(s, tc_subtractionTest);
 
 	/* loop test conversion/counter-conversion */
 	TCase *tc_conversionLoopVerify = tcase_create("conversionLoopVerification");

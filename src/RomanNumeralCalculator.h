@@ -10,5 +10,6 @@ char*	convertIntToRomanNumeral(int value);
 int		convertRomanNumeralToInt(const char* numeral);
 
 char*	RomanNumeralAddition(const char* numeral1, const char* numeral2);
+char*	RomanNumeralSubtraction(const char* numeral1, const char* numeral2);
 
 #endif /* ROMANNUMERALCALCULATOR_H */
