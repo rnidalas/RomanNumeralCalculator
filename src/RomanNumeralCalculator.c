@@ -68,94 +68,47 @@ char* convertIntToRomanNumeral(int value) {
  * Function assumes well formatted input numeral
  */
 int convertRomanNumeralToInt(const char* numeral) {
+	const char* numeralTable[] = 
+		{ "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+	const int numeralValueTable[] = 
+		{1000,  900, 500,  400, 100,   90,  50,   40,  10,    9,   5,    4,   1 };
+	
 	int numeralLength = strlen(numeral);
 	int value = 0, i = numeralLength-1;
+	int tableNumLength, tableIndex=12;	// tableIndex set to last index of table
 	
-	/* start with i value at end of numeral string and iterate back
-	 * I values found at the end of numeral, loop for multiples */
-	for(; i>=0; i--) {
-		if(numeral[i] != 'I') {
-			break;
+	// iterate while there are still characters in the numeral and still options in the table
+	while(i >= 0 && tableIndex >= 0) {
+		tableNumLength = strlen(numeralTable[tableIndex]); // either 2 or 1 with above table
+		
+		// If testing a single character numeral piece
+		if(tableNumLength == 1) {
+			// check if numeral part match
+			if(numeral[i] == numeralTable[tableIndex][0]) {
+				// increment value and decrement numeral index
+				value += numeralValueTable[tableIndex];
+				i--;
+			}
+			else {
+				// else change tableIndex to check next numeral
+				tableIndex--;
+			}
 		}
-		value++;
-	}
-	
-	/* Check for values of 4 and 5 */
-	if(numeral[i] == 'V') {
-		if(i > 0 && numeral[i-1] == 'I') {
-			value += 4;
-			i -= 2;
-		} 
-		else {
-			value += 5;
-			i--;
+		// If testing a 2 character numeral piece
+		else if(tableNumLength == 2) {
+			// check if both characters of numeral match up
+			if( i>0 && numeral[i] == numeralTable[tableIndex][1]
+					&& numeral[i-1] == numeralTable[tableIndex][0] ) {
+				// if match, increment value and decrement numeral index appropriately
+				value += numeralValueTable[tableIndex];
+				i -= 2;
+			}
+			else {
+				// else change tableIndex to check next numeral
+				tableIndex--;
+			}
 		}
-	}
-	
-	/* Check for values of 10, loop for multiples */
-	for(; i>=0; i--) {
-		if(numeral[i] != 'X') {
-			break;
-		} 
-		else if(i > 0 && numeral[i-1] == 'I') {
-			value += 9;
-			i--;
-		} 
-		else {
-			value += 10;
-		}
-	}
-	
-	/* Check for values of 40 and 50 */
-	if(numeral[i] == 'L') {
-		if(i > 0 && numeral[i-1] == 'X') {
-			value += 40;
-			i -= 2;
-		}
-		else {
-			value += 50;
-			i--;
-		}
-	}
-	
-	/* Check for values of 90 and 100, loop for multiples */
-	for(; i>=0; i--) {
-		if(numeral[i] != 'C') {
-			break;
-		} 
-		else if(i > 0 && numeral[i-1] == 'X') {
-			value += 90;
-			i--;
-		} 
-		else {
-			value += 100;
-		}
-	}
-	
-	/* Check for values of 400 and 500 */
-	if(numeral[i] == 'D') {
-		if(i > 0 && numeral[i-1] == 'C') {
-			value += 400;
-			i -= 2;
-		}
-		else {
-			value += 500;
-			i--;
-		}
-	}
-	
-	/* Check for values of 900 and 1000, loop for multiples */
-	for(; i>=0; i--) {
-		if(numeral[i] != 'M') {
-			break;
-		} 
-		else if(i > 0 && numeral[i-1] == 'C') {
-			value += 900;
-			i--;
-		} 
-		else {
-			value += 1000;
-		}
+		
 	}
 	
 	return value;
