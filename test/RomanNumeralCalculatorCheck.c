@@ -525,8 +525,8 @@ Suite* RomanNumeralCalculatorSuite(void) {
 
 	/* Loop tests */
 	TCase *tc_loopTests = tcase_create("LoopTests");
-	tcase_add_loop_test(tc_loopTests, test_additionLoopTest,1,4000);
-	tcase_add_loop_test(tc_loopTests, test_subtractionLoopTest,1,4000);
+	/*tcase_add_loop_test(tc_loopTests, test_additionLoopTest,1,4000);
+	tcase_add_loop_test(tc_loopTests, test_subtractionLoopTest,1,4000);*/
 	tcase_add_loop_test(tc_loopTests, test_conversionLoopVerification, 1, 4000);
 	suite_add_tcase(s, tc_loopTests);
 

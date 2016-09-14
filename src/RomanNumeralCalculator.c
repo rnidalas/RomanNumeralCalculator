@@ -10,8 +10,7 @@
 char* RomanNumeralAddition(const char* numeral1, const char* numeral2) {
 	int value1 = convertRomanNumeralToInt(numeral1);
 	int value2 = convertRomanNumeralToInt(numeral2);
-	char* sum = convertIntToRomanNumeral( value1 + value2 );
-	return sum;
+	return convertIntToRomanNumeral( value1 + value2 );
 }
 
 /* Function RomanNumeralSubtraction
@@ -22,8 +21,7 @@ char* RomanNumeralAddition(const char* numeral1, const char* numeral2) {
 char* RomanNumeralSubtraction(const char* numeral1, const char* numeral2) {
 	int value1 = convertRomanNumeralToInt(numeral1);
 	int value2 = convertRomanNumeralToInt(numeral2);
-	char* dif = convertIntToRomanNumeral( abs(value1 - value2) );
-	return dif;
+	return convertIntToRomanNumeral( abs(value1 - value2) );
 }
 
 /* Function convertIntToRomanNumeral
@@ -31,133 +29,162 @@ char* RomanNumeralSubtraction(const char* numeral1, const char* numeral2) {
  * Returns:				character pointer to roman numeral cstring
  */
 char* convertIntToRomanNumeral(int value) {
+	const char* numeralTable[] = 
+		{ "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+	const int numeralValueTable[] = 
+		{1000,  900, 500,  400, 100,   90,  50,   40,  10,    9,   5,    4,   1 };
+	
 	char* numeral = malloc(sizeof(char)*SIZE_OF_MAX_NUMERAL);
-	int i=0;			// index into numeral to prevent buffer overflow
+	int i=0, tableIndex=0;	// i is index into numeral to prevent buffer overflow
 	
 	/* Ensure numeral string initially empty */
 	strcpy(numeral,"");
 
-	if(value >= 1000) {
+	if(value >= numeralValueTable[tableIndex]) {
 		/* for loop using i to prevent buffer overflow */
 		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
-			strcat(numeral, "M");
+			strcat(numeral, numeralTable[tableIndex]);
 			
 			// Break if under value
-			if((value -= 1000) < 1000)
+			if((value -= numeralValueTable[tableIndex]) < numeralValueTable[tableIndex])
 				break;
 		}
 	}
-
-	if(value >= 900) {
+	
+	tableIndex++;
+	
+	if(value >= numeralValueTable[tableIndex]) {
 		// Check to prevent buffer overflow
 		if(i < SIZE_OF_MAX_NUMERAL-3) {
-			strcat(numeral, "CM");
-			value -= 900;
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
 		}
 		i += 2;
 	}
+	
+	tableIndex++;
 
-	if(value >= 500) {
+	if(value >= numeralValueTable[tableIndex]) {
 		// Check to prevent buffer overflow
 		if(i < SIZE_OF_MAX_NUMERAL-2) {
-			strcat(numeral, "D");
-			value -= 500;
-		}
-		i += 1;
-	}
-
-	if(value >= 400) {
-		// Check to prevent buffer overflow
-		if(i < SIZE_OF_MAX_NUMERAL-3) {
-			strcat(numeral, "CD");
-			value -= 400;
-		}
-		i += 2;
-	}
-
-	if(value >= 100) {
-		/* for loop using i to prevent buffer overflow */
-		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
-			strcat(numeral, "C");
-			
-			// Break if under value
-			if((value -= 100) < 100)
-				break;
-		}
-	}
-
-	if(value >= 90) {
-		// Check to prevent buffer overflow
-		if(i < SIZE_OF_MAX_NUMERAL-3) {
-			strcat(numeral, "XC");
-			value -= 90;
-		}
-		i += 2;
-	}
-
-	if(value >= 50) {
-		// Check to prevent buffer overflow
-		if(i < SIZE_OF_MAX_NUMERAL-2) {
-			strcat(numeral, "L");
-			value -= 50;
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
 		}
 		i += 1;
 	}
 	
-	if(value >= 40) {
+	tableIndex++;
+
+	if(value >= numeralValueTable[tableIndex]) {
 		// Check to prevent buffer overflow
 		if(i < SIZE_OF_MAX_NUMERAL-3) {
-			strcat(numeral, "XL");
-			value -= 40;
-		}
-		i += 2;
-	}
-
-	if(value >= 10) {
-		/* for loop using i to prevent buffer overflow */
-		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
-			strcat(numeral, "X");
-			
-			// Break if under value
-			if((value -= 10) < 10)
-				break;
-		}
-	}
-
-	if(value >= 9) {
-		// Check to prevent buffer overflow
-		if(i < SIZE_OF_MAX_NUMERAL-3) {
-			strcat(numeral, "IX");
-			value -= 9;
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
 		}
 		i += 2;
 	}
 	
-	if(value >= 5) {
+	tableIndex++;
+
+	if(value >= numeralValueTable[tableIndex]) {
+		/* for loop using i to prevent buffer overflow */
+		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
+			strcat(numeral, numeralTable[tableIndex]);
+			
+			// Break if under value
+			if((value -= numeralValueTable[tableIndex]) < numeralValueTable[tableIndex])
+				break;
+		}
+	}
+	
+	tableIndex++;
+
+	if(value >= numeralValueTable[tableIndex]) {
+		// Check to prevent buffer overflow
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
+		}
+		i += 2;
+	}
+	
+	tableIndex++;
+
+	if(value >= numeralValueTable[tableIndex]) {
 		// Check to prevent buffer overflow
 		if(i < SIZE_OF_MAX_NUMERAL-2) {
-			strcat(numeral, "V");
-			value -= 5;
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
 		}
 		i += 1;
 	}
 	
-	if(value >= 4) {
+	tableIndex++;
+	
+	if(value >= numeralValueTable[tableIndex]) {
 		// Check to prevent buffer overflow
 		if(i < SIZE_OF_MAX_NUMERAL-3) {
-			strcat(numeral, "IV");
-			value -= 4;
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
 		}
 		i += 2;
 	}
 	
-	if(value > 0) {
+	tableIndex++;
+
+	if(value >= numeralValueTable[tableIndex]) {
 		/* for loop using i to prevent buffer overflow */
 		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
-			strcat(numeral, "I");
+			strcat(numeral, numeralTable[tableIndex]);
+			
+			// Break if under value
+			if((value -= numeralValueTable[tableIndex]) < numeralValueTable[tableIndex])
+				break;
+		}
+	}
+	
+	tableIndex++;
+
+	if(value >= numeralValueTable[tableIndex]) {
+		// Check to prevent buffer overflow
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
+		}
+		i += 2;
+	}
+	
+	tableIndex++;
+	
+	if(value >= numeralValueTable[tableIndex]) {
+		// Check to prevent buffer overflow
+		if(i < SIZE_OF_MAX_NUMERAL-2) {
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
+		}
+		i += 1;
+	}
+	
+	tableIndex++;
+	
+	if(value >= numeralValueTable[tableIndex]) {
+		// Check to prevent buffer overflow
+		if(i < SIZE_OF_MAX_NUMERAL-3) {
+			strcat(numeral, numeralTable[tableIndex]);
+			value -= numeralValueTable[tableIndex];
+		}
+		i += 2;
+	}
+	
+	tableIndex++;
+	
+	if(value >= numeralValueTable[tableIndex]) {
+		/* for loop using i to prevent buffer overflow */
+		for(; i<SIZE_OF_MAX_NUMERAL; i+=1) {
+			strcat(numeral, numeralTable[tableIndex]);
 			
 			// Break if numeral completed
-			if((value -= 1) == 0)
+			if((value -= numeralValueTable[tableIndex]) < numeralValueTable[tableIndex])
 				break;
 		}
 	}
