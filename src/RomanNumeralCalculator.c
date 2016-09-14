@@ -29,10 +29,6 @@ char* RomanNumeralSubtraction(const char* numeral1, const char* numeral2) {
  * Returns:				character pointer to roman numeral cstring
  */
 char* convertIntToRomanNumeral(int value) {
-	const char* numeralTable[] = 
-		{ "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
-	const int numeralValueTable[] = 
-		{1000,  900, 500,  400, 100,   90,  50,   40,  10,    9,   5,    4,   1 };
 	
 	char* numeral = malloc(sizeof(char)*SIZE_OF_MAX_NUMERAL);
 	int i=0, tableIndex=0;	// i is index into numeral to prevent buffer overflow
@@ -68,10 +64,6 @@ char* convertIntToRomanNumeral(int value) {
  * Function assumes well formatted input numeral
  */
 int convertRomanNumeralToInt(const char* numeral) {
-	const char* numeralTable[] = 
-		{ "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
-	const int numeralValueTable[] = 
-		{1000,  900, 500,  400, 100,   90,  50,   40,  10,    9,   5,    4,   1 };
 	
 	int numeralLength = strlen(numeral);
 	int value = 0, i = numeralLength-1;
