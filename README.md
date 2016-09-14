@@ -14,3 +14,8 @@ addition, subtraction, and conversions that are handled in the
 library. If faster testing is desired, the looping test cases are
 grouped together and may be commented out. If thoroughness in
 testing is desired, these should be left to run.
+
+Project is easily set for possible future expansion for a greater
+domain of Roman Numerals by use of the table lookups, by expanding
+the tables in the header file. Additional tests should be written
+before changes implemented.
